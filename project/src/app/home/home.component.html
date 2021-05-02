@@ -3,13 +3,13 @@
         <div class="col-lg-10 col-md-10 col-sm-10">
             <nav class="navbar navbar-dark bg-dark">
                 <form class="form-inline" style="width: 100%;">
-                    <input class="form-control mr-sm-2" style="width:90%;" type="search" placeholder="Search"
-                        aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
+
+                    <input class="form-control mr-sm-2" style="width:90%;" name="search" type="search" placeholder="Search"
+                        aria-label="Search" [(ngModel)]="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>
-        </div>
-
+        </div>       
         <div class="col-lg-2 col-md-2 col-sm-2">
             <button type="button" class="btn btn-primary" (click)="goToCart()">
                 Go TO Cart <span class="badge badge-light">{{myProducts.length}}</span>
@@ -18,12 +18,12 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-lg-3" *ngFor="let product of products">
+        <div class="col-lg-3" *ngFor="let product of products | filter:search">
             <div class="card mt-2">
                 <table>
                     <tr>
                         <td>
-                            <h6 style="float: right;">Lenevo</h6>
+                            <h6 style="float: right;">{{product.brand}}</h6>
                         </td>
                     </tr>
                     <tr>
